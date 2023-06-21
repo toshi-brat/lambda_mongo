@@ -79,7 +79,7 @@ module "asg" {
   ami             = "ami-0f5ee92e2d63afc18"
   instance_type   = "t2.micro"
   recurrence = "* * * * 1-5"
-  time_zone = "Asis/Kolkata"
+  time_zone = "Asia/Kolkata"
   snet        = [lookup(module.network.pub-snet-id, "s1", null).id , lookup(module.network.pub-snet-id, "s2", null).id]
   sg              = lookup(module.sg.output-sg-id, "mongo-server", null)  
   asg_sns_topic = module.sns.sns-arn
@@ -91,28 +91,28 @@ module "asg" {
     min_size = "3"
     max_size = "3"
     desired_capacity = "3"
-    start_time = "2023-06-22T09:00:00Z"
+    start_time = "2023-06-21T05:30:00Z" //time should be in UTC
   },
     morning-down = {
     schedule_name = "Morning-1030"
     min_size = "1"
     max_size = "1"
     desired_capacity = "1"
-    start_time = "2023-06-22T10:30:00Z"
+    start_time = "2023-06-21T05:40:00Z"
   },
     evening-up = {
     schedule_name = "Evening-1700"
     min_size = "3"
     max_size = "3"
     desired_capacity = "3"
-    start_time = "2023-06-22T17:00:00Z"
+    start_time = "2023-06-21T05:50:00Z"
   },
     evening-down = {
     schedule_name = "Evening-1830"
     min_size = "1"
     max_size = "1"
     desired_capacity = "1"
-    start_time = "2023-06-22T18:30:00Z"
+    start_time = "2023-06-21T06:00:00Z"
   }
  }
 }

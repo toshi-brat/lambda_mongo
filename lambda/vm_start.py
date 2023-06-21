@@ -1,12 +1,13 @@
 import boto3
 import time
+import os
 
 def lambda_handler(event,context):
     ec2_client = boto3.client('ec2', region_name='ap-south-1')
     sns_client = boto3.client('sns', region_name='ap-south-1')
     ssm_client = boto3.client('ssm', region_name='ap-south-1')
-    sns_arn_running = 'arn:aws:sns:ap-south-1:750941261838:mongo-alert'
-    instance_id='i-071de90f20dbe5f9e'
+    sns_arn_running = os.environ.get('sns_arn_running')
+    instance_id=os.environ.get('instance_id')
     
     #Start the Instance
     response = ec2_client.start_instances(InstanceIds=[instance_id])

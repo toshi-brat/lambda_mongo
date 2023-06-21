@@ -32,5 +32,6 @@ resource "aws_instance" "mongo-server" {
   user_data = var.user_data
   tags = {
     Name = "mongo-server"
+    Made_By = "Terraform"
   }
  }

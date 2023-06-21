@@ -9,3 +9,6 @@ variable "lambda" {
 }
 variable "lambda_role" {}
 variable "lambda_runtime" {}
+variable "lambda_env" {
+  type = map
+}

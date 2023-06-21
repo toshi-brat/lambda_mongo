@@ -4,11 +4,11 @@ import time
 def lambda_handler(event,context):
     ec2_client = boto3.client('ec2', region_name='ap-south-1')
     sns_client = boto3.client('sns')
-    sns_arn = 'arn:aws:sns:ap-south-1:750941261838:mongo-alert'
-    instance_id='i-071de90f20dbe5f9e'
+    sns_arn = os.environ.get('sns_arn_running')
+    instance_id=os.environ.get('instance_id')
 
+    #Stop Instace
     response = ec2_client.stop_instances(InstanceIds=[instance_id])
-    
     time.sleep(30)
     
     # Check the status of the EC2 instance
