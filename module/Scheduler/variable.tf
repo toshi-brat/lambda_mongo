@@ -1,6 +1,6 @@
 variable "schedule" {
-    type=map 
+  type = map(any)
 }
 variable "scheduler_policy" {
-    type=map
+  type = map(any)
 }

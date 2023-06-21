@@ -1,13 +1,13 @@
 variable "sg" {}
-variable "snet"{}
+variable "snet" {}
 
 variable "schedule" {
   type = map(object({
-    schedule_name = string
-    min_size = string
-    max_size= string
-    desired_capacity=string
-    start_time=string
+    schedule_name    = string
+    min_size         = string
+    max_size         = string
+    desired_capacity = string
+    start_time       = string
   }))
 }
 variable "template_name" {}

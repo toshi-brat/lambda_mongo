@@ -13,7 +13,7 @@ resource "aws_iam_role" "ec2_stop" {
 }
 
 resource "aws_iam_policy" "ec2_stop_policy" {
-  name        = "example-policy"
+  name = "example-policy"
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
@@ -24,13 +24,13 @@ resource "aws_iam_policy" "ec2_stop_policy" {
         "logs:PutLogEvents"
       ]
       Resource = ["arn:aws:logs:*:*:*"]
-    },{
+      }, {
       Effect = "Allow"
       Action = [
         "sns:Publish"
       ]
       Resource = var.sns_arn
-    },{
+      }, {
       Effect = "Allow"
       Action = [
         "ec2:StopInstances",
@@ -39,13 +39,13 @@ resource "aws_iam_policy" "ec2_stop_policy" {
         "ssm:SendCommand",
         "ssm:GetCommandInvocation"
       ]
-      Resource = ["*"]  
-    }
+      Resource = ["*"]
+      }
     ]
   })
 }
 
 resource "aws_iam_role_policy_attachment" "example" {
   policy_arn = aws_iam_policy.ec2_stop_policy.arn
-  role = aws_iam_role.ec2_stop.name
+  role       = aws_iam_role.ec2_stop.name
 }

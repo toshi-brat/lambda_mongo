@@ -1,14 +1,14 @@
 variable "lambda" {
   type = map(object({
-    filename = string
-    function_name = string
-    handler = string
+    filename         = string
+    function_name    = string
+    handler          = string
     source_code_hash = string
-    timeout = number
+    timeout          = number
   }))
 }
 variable "lambda_role" {}
 variable "lambda_runtime" {}
 variable "lambda_env" {
-  type = map
+  type = map(any)
 }
