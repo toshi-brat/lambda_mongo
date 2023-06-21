@@ -16,3 +16,5 @@ variable "instance_type" {}
 variable "key_name" {}
 variable "asg_sns_topic" {}
 variable "user_data" {}
+variable "recurrence" {}
+variable "time_zone" {}

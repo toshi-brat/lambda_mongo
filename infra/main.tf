@@ -45,14 +45,6 @@ module "sg" {
         },
         {
           cidr_blocks     = ["0.0.0.0/0"]
-          from_port       = 22
-          protocol        = "tcp"
-          self            = null
-          to_port         = 22
-          security_groups = null
-        },
-        {
-          cidr_blocks     = ["0.0.0.0/0"]
           from_port       = 8080
           protocol        = "tcp"
           self            = null
@@ -78,6 +70,7 @@ module "ec2" {
   ami = "ami-0f5ee92e2d63afc18"
   sg = lookup(module.sg.output-sg-id, "mongo-server", null)
   user_data = file("${path.module}/user_data.sh")
+  key_pair="aws_key_test"
 }  
 
 module "asg" {
@@ -85,6 +78,8 @@ module "asg" {
   user_data = filebase64("${path.module}/user_data.sh")
   ami             = "ami-0f5ee92e2d63afc18"
   instance_type   = "t2.micro"
+  recurrence = "* * * * 1-5"
+  time_zone = "Asis/Kolkata"
   snet        = [lookup(module.network.pub-snet-id, "s1", null).id , lookup(module.network.pub-snet-id, "s2", null).id]
   sg              = lookup(module.sg.output-sg-id, "mongo-server", null)  
   asg_sns_topic = module.sns.sns-arn

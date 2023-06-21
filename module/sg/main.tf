@@ -28,7 +28,7 @@ resource "aws_security_group" "vpc-sg" {
   }
 
   tags = {
-    Name = ""
+    Name = "test-sg"
   }
 }
 

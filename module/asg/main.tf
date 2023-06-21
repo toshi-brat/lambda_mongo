@@ -32,6 +32,8 @@ resource "aws_autoscaling_schedule" "foobar" {
   max_size               = each.value["max_size"]
   desired_capacity       = each.value["desired_capacity"]
   start_time             = each.value["start_time"]
+  recurrence = var.recurrence
+  time_zone = var.time_zone
   autoscaling_group_name = aws_autoscaling_group.mongo-asg.name
 }
 
