@@ -39,14 +39,14 @@ module "scheduler" {
 
 data "archive_file" "ec2_start_lambda" {
   type        = "zip"
-  source_file = "./vm_start.py"
-  output_path = "vm_start.zip"
+  source_dir = "./start_lambda"
+  output_path = "./start_lambda/vm_start.zip"
 }
 
 data "archive_file" "ec2_stop_lambda" {
   type        = "zip"
-  source_file = "./vm_stop.py"
-  output_path = "vm_stop.zip"
+  source_dir = "./stop_lambda"
+  output_path = "./stop_lambda/vm_stop.zip"
 }
 
 data "aws_iam_role" "lambda" {
