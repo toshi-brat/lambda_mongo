@@ -32,7 +32,8 @@ Now For the Final Part we will create the Lambda Function to do so Switch the Di
 
 -> Here also you need to update the main.tf as per the your requirement
 
--> Now you can Execute the Terraform init/plan/apply from this directory to create the resources given below
+-> Now you can Execute the Terraform init/plan/apply from this directory to create the resources given  below
+
     a. AWS Scheduler [Update the Cron As Per your Prefered Time (UTC)]
     b. AWS Lambda
 
