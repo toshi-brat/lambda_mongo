@@ -1,10 +1,12 @@
 import boto3
 import time
+import os
 
 def lambda_handler(event,context):
     ec2_client = boto3.client('ec2', region_name='ap-south-1')
-    sns_client = boto3.client('sns')
-    sns_arn = os.environ.get('sns_arn_running')
+    sns_client = boto3.client('sns', region_name='ap-south-1')
+    ssm_client = boto3.client('ssm', region_name='ap-south-1')
+    sns_arn_running = os.environ.get('sns_arn_running')
     instance_id=os.environ.get('instance_id')
 
     #Stop Instace
@@ -23,7 +25,7 @@ def lambda_handler(event,context):
         # Send email notification for stopped instance
         message = "The EC2 instance is stopped."
         sns_client.publish(
-            TopicArn=sns_arn,
+            TopicArn=sns_arn_running,
             Message=message,
             Subject='EC2 Instance Stopped'
         )
@@ -33,7 +35,7 @@ def lambda_handler(event,context):
         # Send email notification for running instance
         message = "The EC2 instance is still running."
         sns_client.publish(
-            TopicArn=sns_arn_stopped,
+            TopicArn=sns_arn_running,
             Message=message,
             Subject='EC2 Instance Running'
         )

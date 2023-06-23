@@ -13,7 +13,7 @@ resource "aws_iam_role" "ec2_stop" {
 }
 
 resource "aws_iam_policy" "ec2_stop_policy" {
-  name = "example-policy"
+  name = "lambda-policy"
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{

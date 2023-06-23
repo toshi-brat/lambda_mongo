@@ -6,22 +6,22 @@ module "scheduler" {
   schedule = {
     schedule-1 = {
       scheduler_name      = "Morning_Start"
-      schedule_expression = "cron(15 5 * * ? *)"
+      schedule_expression = "cron(15 5 * * ? *)" //time should be in UTC
       lambda_arn          = lookup(module.lambda.lambda_arn, "ec2_start_lambda", null).arn
     },
     schedule-2 = {
       scheduler_name      = "Morning_Stop"
-      schedule_expression = "cron(30 5 * * ? *)"
+      schedule_expression = "cron(30 5 * * ? *)" //time should be in UTC
       lambda_arn          = lookup(module.lambda.lambda_arn, "ec2_stop_lambda", null).arn
     },
     schedule-3 = {
       scheduler_name      = "Evening_start"
-      schedule_expression = "cron(45 5 * * ? *)"
+      schedule_expression = "cron(45 5 * * ? *)" //time should be in UTC
       lambda_arn          = lookup(module.lambda.lambda_arn, "ec2_start_lambda", null).arn
     },
     schedule-4 = {
       scheduler_name      = "Evening_Stop"
-      schedule_expression = "cron(0 6 * * ? *)"
+      schedule_expression = "cron(0 6 * * ? *)" //time should be in UTC
       lambda_arn          = lookup(module.lambda.lambda_arn, "ec2_stop_lambda", null).arn
     }
   }

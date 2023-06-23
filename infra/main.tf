@@ -98,21 +98,21 @@ module "asg" {
       min_size         = "1"
       max_size         = "1"
       desired_capacity = "1"
-      start_time       = "2023-06-21T05:40:00Z"
+      start_time       = "2023-06-21T05:40:00Z" //time should be in UTC
     },
     evening-up = {
       schedule_name    = "Evening-1700"
       min_size         = "3"
       max_size         = "3"
       desired_capacity = "3"
-      start_time       = "2023-06-21T05:50:00Z"
+      start_time       = "2023-06-21T05:50:00Z" //time should be in UTC
     },
     evening-down = {
       schedule_name    = "Evening-1830"
       min_size         = "1"
       max_size         = "1"
       desired_capacity = "1"
-      start_time       = "2023-06-21T06:00:00Z"
+      start_time       = "2023-06-21T06:00:00Z" //time should be in UTC
     }
   }
 }
