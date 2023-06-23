@@ -4,18 +4,20 @@ Status=unknown
 systemctl is-active --quiet mongod.service
 if [ $? != 0 ]; then
     Msg=Mongo_Service_NotRunning
+    Status=Down
 else
-    sudo netstat -tnlp | grep mongo
+    sudo netstat -tnlp | grep mongo > /dev/null
     if [ $? != 0 ]; then
         Msg=Mongo_Port_Not_Mapped
+        Status=Down
     else
         connect=$(mongosh admin --quiet --eval "db.version()")
-        if [ $? != 0 ]; then
+        if [ "$connect" != "6.0.6" ]; then
             Msg=Mongo_Service_Running_But_Cant_Connect
+            Status=Down
         else
             Msg=Mongo_Running_And_Reachable
+            Status=Running
         fi
     fi    
 fi
-
-aws sns publish --topic-arn <> --message $Msg --subject "Server_Status"
