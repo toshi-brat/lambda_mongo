@@ -13,7 +13,7 @@ Step 1:- Clone This Repository, a new Dir called lambda_mongo
 
 Step 2:- Swtich to the Directory /lambda_mongo/infra
 
--> You Update the main.tf file as per the your requirement
+-> You Update the main.tf file as per the your requirement 
 
     a. Network (VPC/SUBNET/IGW/ROUTE TABLE)[Change the CIDR as per your Needs]
     b. Security Group (Allowed Ports: 3000,22,27017,8080)[Sg to be attached to the Virtual Machines]
