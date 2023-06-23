@@ -1,6 +1,6 @@
 # terraform
 This Code will Help you Setup a Mongo 6.0.6 in a EC2
-As well as a Auto-scalling-Group 
+As well as an Auto-scalling-Group 
 
 Pre-Requisit
 -> An AWS Account Acces Key and Id with Admin Priveleges to Create The Resource
